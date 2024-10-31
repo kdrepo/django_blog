@@ -1,0 +1,52 @@
+{% extends "blog/base.html" %}
+
+
+
+
+{% block content %}
+
+
+<br>
+<div class="container">
+    <h3>home 2 for displaying book 2 titles </h3>
+    <hr>
+    
+
+     
+    {% for titles in titles %}
+
+    <h4>{{ titles.chapTitle }}</h4>
+
+        {% for sub1 in titles.b2subhead1_set.all %}
+
+        <h5>{{ sub1.subhead1titles }}</h5>
+
+                {% for sub2 in sub1.b2subhead2_set.all %}
+                <li>{{ sub2.subhead2titles }}</li>
+                {% endfor %}
+
+        {% endfor %}
+
+    {% endfor %}
+
+
+    
+
+
+
+    
+
+    
+
+
+    <!-- Button trigger modal -->
+
+
+
+
+
+</div>
+{% endblock content %}
+
+
+

@@ -1,0 +1,81 @@
+{% extends "blog/base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+
+
+
+<div class="container">
+    <br>
+    <h3>Chapter Titles For Book One <button class="btn btn-outline-info  btn-sm mt-1 mb-1 float-right" type="button"
+            class="btn btn-primary"> <a href="/1/December 5, 1912*"> Start Reading Nigga</a></button>
+    </h3>
+    <hr>
+    <!-- chapter list 1-36 -->
+
+    <h5><a class="" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false"
+            aria-controls="collapse1">
+            {{ c1.chapVolume }}: {{ c1.chapTitle }}
+        </a></h5>
+    <div class="collapse" id="collapse1">
+        <ul>
+            {% for sub in c1subs %}
+            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- chapter list 1-36 -->
+
+    <h5><a class="" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false"
+            aria-controls="collapse2">
+            {{ c2.chapVolume }}: {{ c2.chapTitle }}
+        </a></h5>
+    <div class="collapse" id="collapse2">
+        <ul>{% for sub in c2subs %}
+            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <!-- chapter list 1-36 -->
+
+    <h5><a class="" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false"
+            aria-controls="collapse3">
+            {{ c3.chapVolume }}: {{ c3.chapTitle }}
+        </a></h5>
+    <div class="collapse" id="collapse3">
+        <ul>{% for sub in c3subs %}
+            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- chapter list 1-36 -->
+
+    <h5><a class="" data-toggle="collapse" href="#collapse4" role="button" aria-expanded="false"
+            aria-controls="collapse4">
+            {{ c4.chapVolume }}: {{ c4.chapTitle }}
+        </a></h5>
+    <div class="collapse" id="collapse4">
+        <ul>{% for sub in c4subs %}
+            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}

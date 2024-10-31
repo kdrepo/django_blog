@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %} {% block content %}
+
+<br />
+<div class="container">
+  <h3>Book Name: {{ bookname }}</h3>
+  <hr />
+  {% for chap in ch %}
+
+  <h5>
+    <a href="{% url 'chapterdisplay' bookname.id chap.chapTitle %}"
+      >{{ chap.chapTitle }}</a
+    >
+  </h5>
+
+  {% for sub1 in chap.b2subhead1_set.all %}
+
+  <ul>
+    <h6>
+      <a href="{% url 'sub1display' bookname.id chap.chapTitle sub1.id %}">
+        {{ sub1.subhead1titles }}</a
+      >
+    </h6>
+  </ul>
+
+  {% for sub2 in sub1.b2subhead2_set.all %}
+  <ul>
+    <ul>
+      <li>
+        <a
+          href="{% url 'sub2display' bookname.id chap.chapTitle sub1.id sub2.id %}"
+          >{{ sub2.subhead2titles }}</a
+        >
+      </li>
+    </ul>
+  </ul>
+  {% endfor %} {% endfor %} {% endfor %} <br />
+</div>
+{% endblock content %}

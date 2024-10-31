@@ -1,0 +1,95 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+
+{% load custom_tags %}
+
+
+
+
+<div class="container">
+    <br>
+
+
+    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'books' bookname.id %}">{{ bookname }}</a></li>             
+            <li class="breadcrumb-item active" aria-current="page">{{ chaptertitle }}</li>
+        </ol>
+    </nav> 
+    
+    
+    <hr>
+    <h3>{{chaptertitle}}</h3>
+    <hr>
+    
+    
+    <article>
+        {% load custom_tags %}       
+      
+        {{ peragraphs | mdparser }}
+      
+    </article>
+
+    
+    <hr>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% comment %} 
+
+
+<a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    Link with href
+  </a>
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    Button with data-bs-target
+  </button>
+  
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div>
+        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+
+        {% for chap in ch %}
+    
+<h5><a href="{% url 'chapterdisplay' bookname.id chap.chapTitle %}">{{ chap.chapTitle }}</a></h5>
+
+    {% for sub1 in chap.b2subhead1_set.all %}
+
+    <ul><h6><a href="{% url 'sub1display' bookname.id chap.chapTitle sub1.id %}"> {{ sub1.subhead1titles }}</a></h6></ul>
+
+            {% for sub2 in sub1.b2subhead2_set.all %}
+            <ul><ul><li><a href="{% url 'sub2display' bookname.id chap.chapTitle sub1.id sub2.id %}">{{ sub2.subhead2titles }}</a></li></ul></ul>
+            {% endfor %}
+            
+
+            {% endfor %} 
+           {% endfor %} <br>
+
+      </div>
+      </div>
+  </div>
+
+ {% endcomment %}
+
+
+
+
+
+
+{% endblock content %}

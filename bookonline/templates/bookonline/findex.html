@@ -1,0 +1,109 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <br>
+    <h3>Coming Soom | Just a Sample Here</h3>
+
+
+    <div>
+        <hr>
+        <h2>A Index</h2>
+        <hr>
+        <ul>
+            {% for w in a %}
+
+            <li>
+                
+                    <h6>{{ w.words }}: </h6>
+              
+            </li>
+            {% for u in w.aurl_set.all %}
+            <a href="/1/{{u.url}}">{{ u.urltext }} | </a>
+            {% endfor %}
+
+            {% endfor %}
+        </ul>
+    </div>
+
+    
+
+    <div>
+        <hr><h2>B Index</h2><hr>
+        <ul>
+            {% for w in b %}
+
+            <li><h6>{{ w.words }}: </h6></li>
+
+            {% for u in w.burl_set.all %} 
+            <a href="/1/{{u.url}}">{{ u.urltext }} | </a>
+            {% endfor %}
+
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    
+    <div>
+        <hr><h2>C Index</h2><hr>
+        <ul>
+            {% for w in c %}
+
+            <li><h6>{{ w.words }}: </h6></li>
+            {% for u in w.curl_set.all %}
+            <a href="/1/{{u.url}}">{{ u.urltext }} | </a>
+            {% endfor %}
+
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    
+    
+    
+        <!-- <ul>
+            {% for w in b %}
+
+            <li name="fulltextarea"><form action="{% url 'bhome' %}">{{ w.words }}: </li>
+            </form>
+            <input type="submit" value="fetch data!"/>         
+
+            {% endfor %}
+        </ul> -->
+    
+    
+    
+
+
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

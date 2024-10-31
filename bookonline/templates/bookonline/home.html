@@ -1,0 +1,38 @@
+{% extends "blog/base.html" %}
+
+
+
+
+{% block content %}
+
+
+<br>
+<div class="container">
+    <h3>Chapter Titles Simple Display: For Better Display click Chapters <a
+            {% comment %} class="btn btn-outline-info  btn-sm mt-1 mb-1 float-right" href="{% url 'bookid' 01 %}">Open Chapter {% endcomment %}
+            Title</a>
+    </h3>
+    <hr>
+    {% for title in titles %}
+    <h4>{{ title.chapVolume }}: {{ title.chapTitle }}</h4>
+    <ul>
+        {% for sub in title.b1subhead_set.all %}
+        <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+
+    
+
+    
+
+
+    <!-- Button trigger modal -->
+
+
+
+
+
+</div>
+{% endblock content %}

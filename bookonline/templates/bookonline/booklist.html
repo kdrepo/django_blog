@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+
+
+
+
+{% block content %}
+
+
+<br>
+<div class="container">
+    <h3>Published Books List </h3>
+    <hr>
+    
+
+     
+    {% for title in booklist %}
+   
+    <ul><h5><a href="{% url 'books' title.id %}">{{ title.bookTitle }}</a></h5></ul>
+     {% comment %} {{ title.bookTitle }} {% endcomment %}
+    {% endfor %}
+
+
+    
+
+
+
+    
+
+    
+
+
+    <!-- Button trigger modal -->
+
+
+
+
+
+</div>
+{% endblock content %}
+
+
+
+
+

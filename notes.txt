@@ -1,0 +1,15 @@
+how to create virtual enviroment
+
+    py -3 -m venv virtualenv_Folder
+
+    then set up python interpretator from view >> command palette >> slect interpretator from list (choose venv one from list)
+    ctrl+shift+`        == activate virtual enviroment
+
+      py -m install pythonPakageName
+	py -m pip install django
+	py -m pip install djangorestframework
+	py -m pip install markdown       # Markdown support for the browsable API.
+	py -m pip install django-filter
+    
+django-admin startproject my_first_app_project
+py manage.py startapp my_first_app

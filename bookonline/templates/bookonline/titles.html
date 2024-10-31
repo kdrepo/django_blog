@@ -1,0 +1,189 @@
+{% extends "blog/base.html" %}
+
+
+{% block content %}
+
+{% load custom_tags %}
+{% comment %} {% load markdownify %}
+{% load markdown_extras %} {% endcomment %}
+
+<div class="container">
+    <br>
+
+
+
+    <nav aria-label="breadcrumb">
+
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">{{ bookid.book }}</a></li>
+            <li class="breadcrumb-item"><a href="#">{{ bvol }}: {{ bchap }}</a></li>
+
+            <li class="breadcrumb-item active" aria-current="page">{{ subheading.subheads }}
+
+            </li>
+
+        </ol>
+
+    </nav>
+
+
+
+
+
+
+    <!-- Button trigger modal -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalScrollableTitle">Browse By Chapters</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal body titles here  -->
+
+
+
+                    <h5><a class="" data-toggle="collapse" href="#collapse1" role="button" aria-expanded="false"
+                            aria-controls="collapse1">
+                            {{ c1.chapVolume }}: {{ c1.chapTitle }}
+                        </a></h5>
+                    <div class="collapse" id="collapse1">
+                        <ul>
+                            {% for sub in c1subs %}
+                            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- chapter list 1-36 -->
+
+                    <h5><a class="" data-toggle="collapse" href="#collapse2" role="button" aria-expanded="false"
+                            aria-controls="collapse2">
+                            {{ c2.chapVolume }}: {{ c2.chapTitle }}
+                        </a></h5>
+                    <div class="collapse" id="collapse2">
+                        <ul>{% for sub in c2subs %}
+                            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+
+                    <!-- chapter list 1-36 -->
+
+                    <h5><a class="" data-toggle="collapse" href="#collapse3" role="button" aria-expanded="false"
+                            aria-controls="collapse3">
+                            {{ c3.chapVolume }}: {{ c3.chapTitle }}
+                        </a></h5>
+                    <div class="collapse" id="collapse3">
+                        <ul>{% for sub in c3subs %}
+                            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <!-- chapter list 1-36 -->
+
+                    <h5><a class="" data-toggle="collapse" href="#collapse4" role="button" aria-expanded="false"
+                            aria-controls="collapse4">
+                            {{ c4.chapVolume }}: {{ c4.chapTitle }}
+                        </a></h5>
+                    <div class="collapse" id="collapse4">
+                        <ul>{% for sub in c4subs %}
+                            <li><a href="{% url 'titles' 01 sub.subheads %}">{{ sub.subheads }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+
+
+
+
+
+                    <!-- Modal body ends titles here  -->
+                </div>
+
+
+                <!-- Modal fotter starts  here  -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!-- Modal fotter ends  here  -->
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <h3>
+        {{ subheading }}
+        <!-- Button trigger modal --><button class="btn btn-outline-danger float-right btn-sm " type="button"
+            class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">Open TOC </button>
+
+    </h3>
+    <hr>
+    
+    {% for pera in peragraphs %}
+    <article>
+        {% load custom_tags %}
+        {% comment %} {% load markdownify %} {% endcomment %}
+        {% comment %} {% load markdown_extras %} {% endcomment %}
+      
+        {{ pera.peratext | mdparser }}
+      
+    </article>
+
+    {% endfor %}
+    <hr>
+
+
+   
+    
+    {% if subheading.id == 1 %}    
+    {% else %}
+    <a class="btn btn-outline-info  btn-sm mt-1 mb-1 float-left" href="{% url 'titles' 01 preurl %}">Previous Title</a>
+    {% endif %}
+
+    {% if subheading.id == 94 %}
+    {% else %}
+    <a class="btn btn-outline-info  btn-sm mt-1 mb-1 float-right" href="{% url 'titles' 01 nexturl %}">Next Title</a>
+    
+    {% endif %} 
+
+   
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock content %}
